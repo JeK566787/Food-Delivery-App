@@ -38,8 +38,13 @@ const orderSchema = new mongoose.Schema({
   address: String,
   items: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Shop",
+      id: Number,
+      name: String,
+      price: Number,
+      shopId: Number,
+      quantity: String,
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref: "Shop",
     },
   ],
 });
