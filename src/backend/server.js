@@ -74,6 +74,16 @@ app.delete("/api/cartitems/:itemId", async (req, res) => {
   }
 });
 
+app.delete("/api/cartitems", async (req, res) => {
+  try {
+    await CartItem.deleteMany(); // Assuming CartItem is the Mongoose model for cart items
+    res.json({ message: "Cart items cleared" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 app.put("/api/cartitems/:itemId", async (req, res) => {
   try {
     const { itemId } = req.params;

@@ -1,4 +1,4 @@
-// api.js
+import axios from "axios";
 
 // Fetch cart items from the server
 export const getCartItems = async () => {
@@ -66,5 +66,15 @@ export const submitOrder = async (orderData) => {
     }
   } catch (error) {
     throw new Error("Failed to submit order: " + error.message);
+  }
+};
+
+export const clearCartItems = async () => {
+  try {
+    const response = await axios.delete("http://localhost:3001/api/cartitems");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to clear cart items.");
   }
 };

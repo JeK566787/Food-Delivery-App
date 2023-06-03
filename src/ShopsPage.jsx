@@ -4,7 +4,6 @@ import axios from "axios";
 const ShopsPage = ({ cartItems, setCartItems }) => {
   const [shops, setShops] = useState([]);
   const [selectedShop, setSelectedShop] = useState(null);
-  // const [cartItems, setCartItems] = useState([]);
 
   console.log(cartItems);
 
@@ -12,19 +11,6 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
   useEffect(() => {
     fetchShops();
   }, []);
-
-  // // Retrieve cart from local storage when component mounts
-  // useEffect(() => {
-  //   const storedCart = localStorage.getItem("cart");
-  //   if (storedCart) {
-  //     setCart(JSON.parse(storedCart));
-  //   }
-  // }, []);
-
-  // // Save the cart to local storage whenever it changes
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify(cartItems));
-  // }, [cartItems]);
 
   const fetchShops = async () => {
     try {
@@ -39,10 +25,18 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
     setSelectedShop(shop);
   };
 
-  const handleAddToCart = async (cartItem) => {
-    // const goodJSON = JSON.stringify(good);
-    // console.log(goodJSON);
+  const handleAddToCart = async (good) => {
     try {
+      const cartItemExists = cartItems.some((item) => item.name === good.name);
+      if (cartItemExists) {
+        // Item is already in the cart, disable the button
+        return;
+      }
+      const cartItem = {
+        name: good.name,
+        price: good.price,
+        shopId: good.shopId,
+      };
       // Send the cart data to the server
       await axios.post("http://localhost:3001/api/cartitems", cartItem);
       // Update the cart state in the Redux store if needed
@@ -51,10 +45,6 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
       console.error(`Post didnt work: ${error}`);
     }
   };
-
-  // const handleAddToCart = (good) => {
-  //   setCart([...cart, good]);
-  // };
 
   return (
     <div>
@@ -67,7 +57,10 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
             {selectedShop.goods.map((good, idx) => (
               <li key={idx}>
                 {good.name} - ${good.price}
-                <button onClick={() => handleAddToCart(good)}>
+                <button
+                  disabled={cartItems.some((item) => item.name === good.name)} // Disable the button if the item is already in the cart
+                  onClick={() => handleAddToCart(good)}
+                >
                   Add to Cart
                 </button>
               </li>

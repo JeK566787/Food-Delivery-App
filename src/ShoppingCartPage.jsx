@@ -6,6 +6,7 @@ import {
   removeCartItem,
   updateCartItem,
   submitOrder,
+  clearCartItems,
 } from "./api"; // Assuming you have API functions for interacting with the backend
 
 const ShoppingCartPage = ({ cartItems, setCartItems }) => {
@@ -71,7 +72,8 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
       };
       await axios.post("http://localhost:3001/api/orders", orderData);
       // await submitOrder(orderData); // Replace with the appropriate API function
-      // You can also clear the cart items here
+      clearCartItems([]);
+      setCartItems([]); // You can also clear the cart items here
       navigate("/"); // Redirect to the home page or order confirmation page
     } catch (error) {
       console.error(error);
