@@ -29,8 +29,13 @@ This project is a food delivery app built using React.js. It allows users to bro
 
    `npm run dev`
 
-5. Open the web application in your browser:
+5. Start the frontend development server:
+
    `npm start`
+
+6. Open your web browser and visit:
+
+   `http://localhost:3000/`
 
 ## Dependencies
 
