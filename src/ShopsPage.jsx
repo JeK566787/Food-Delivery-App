@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import "./App.css";
+
 const ShopsPage = ({ cartItems, setCartItems }) => {
   const [shops, setShops] = useState([]);
   const [selectedShop, setSelectedShop] = useState(null);
@@ -47,7 +49,7 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
   };
 
   return (
-    <div>
+    <div className="test">
       <h1>Shops</h1>
       {selectedShop ? (
         <div>
