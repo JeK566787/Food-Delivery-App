@@ -13,10 +13,14 @@ const App = () => {
       <nav>
         <ul className="nav-bar">
           <li>
-            <Link to="/">Shops</Link>
+            <Link className="nav-link" to="/">
+              Shops
+            </Link>
           </li>
           <li>
-            <Link to="/cart">Shopping Cart</Link>
+            <Link className="nav-link" to="/cart">
+              Shopping Cart
+            </Link>
           </li>
         </ul>
       </nav>

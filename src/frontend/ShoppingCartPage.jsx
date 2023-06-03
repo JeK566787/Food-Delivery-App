@@ -86,11 +86,18 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
       <ul>
         {cartItems.map((item) => (
           <li className="shopping-cart-item" key={item._id}>
-            <span>Good name: {item.name}</span>
-            <span>Price: {item.price}$</span>
+            <div>
+              <span className="item-title">Good name: </span>
+              {item.name}
+            </div>
+            <div>
+              <span className="item-title">Price: </span>
+              {item.price}$
+            </div>
+
             <div>
               {" "}
-              <span>Type amount: </span>
+              <span className="item-title">Type amount: </span>
               <input
                 className="amount-input"
                 type="number"
@@ -99,31 +106,41 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
               />
             </div>
 
-            <button onClick={() => handleRemoveItem(item._id)}>Remove</button>
+            <button
+              className="btn btn-remove"
+              onClick={() => handleRemoveItem(item._id)}
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ul>
-      <div>
+      <form className="form">
         <input
+          className="form-input"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
         />
         <input
+          className="form-input"
           type="text"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           placeholder="Phone Number"
         />
         <input
+          className="form-input"
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           placeholder="Address"
         />
-        <button onClick={handleSubmitOrder}>Submit Order</button>
-      </div>
+      </form>{" "}
+      <button className="btn btn-order" onClick={handleSubmitOrder}>
+        Submit Order
+      </button>
     </>
   );
 };

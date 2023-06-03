@@ -52,13 +52,21 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
         <div>
           <h1 className="main-title">Choose Goods</h1>
           <h2>{selectedShop.name}</h2>
-          <p>{selectedShop.description}</p>
+          {!selectedShop && <p>{selectedShop.description}</p>}
           <ul>
             {selectedShop.goods.map((good, idx) => (
               <li className="shopping-cart-item" key={idx}>
-                <span>Good name: {good.name}</span>
-                <span>Price: {good.price}$</span>
+                <div>
+                  <span className="item-title">Good name: </span>
+                  {good.name}
+                </div>
+                <div>
+                  <span className="item-title">Price: </span>
+                  {good.price}$
+                </div>
+
                 <button
+                  className="btn btn-addCart"
                   disabled={cartItems.some((item) => item.name === good.name)} // Disable the button if the item is already in the cart
                   onClick={() => handleAddToCart(good)}
                 >
@@ -67,16 +75,21 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
               </li>
             ))}
           </ul>
-          <button onClick={() => setSelectedShop(null)}>Back to Shops</button>
+          <button className="btn" onClick={() => setSelectedShop(null)}>
+            Back to Shops
+          </button>
         </div>
       ) : (
         <div>
-          <h1 className="main-title">Choose Shop</h1>
+          <h1 className="main-title ">Choose Shop</h1>
           {shops.map((shop, idx) => (
-            <div key={idx}>
+            <div key={idx} className="shop-container test">
               <h2>{shop.name}</h2>
               <p>{shop.description}</p>
-              <button onClick={() => handleShopSelect(shop)}>
+              <button
+                className="btn btn-selectShop"
+                onClick={() => handleShopSelect(shop)}
+              >
                 Select Shop
               </button>
             </div>
