@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import ShopsPage from "./ShopsPage";
-import ShoppingCartPage from "./ShoppingCartPage";
-
+import ShopsPage from "./pages/ShopsPage";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
+import OrdersPage from "./pages/OrdersPage";
 import "./styles/App.css";
 
 const App = () => {
@@ -42,6 +42,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/order" element={<OrdersPage />} />
       </Routes>
     </div>
   );

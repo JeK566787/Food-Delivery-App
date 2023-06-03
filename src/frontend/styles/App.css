@@ -69,6 +69,10 @@ ul {
   margin-top: 20px;
 }
 
+.btn-order:disabled {
+  background-color: rgb(201, 171, 230);
+}
+
 .btn {
   border-radius: 80px;
   padding: 5px 10px;
@@ -98,4 +102,7 @@ ul {
 }
 .nav-link {
   color: blueviolet;
+}
+.warning {
+  color: red;
 }

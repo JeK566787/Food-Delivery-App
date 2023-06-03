@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import YourCart from "./YourCart";
+import YourCart from "../components/YourCart";
 
 const ShopsPage = ({ cartItems, setCartItems }) => {
   const [shops, setShops] = useState([]);
   const [selectedShop, setSelectedShop] = useState(null);
-  console.log(selectedShop);
-  // Fetch the list of shops from the server
+
   useEffect(() => {
     fetchShops();
   }, []);
@@ -28,7 +27,6 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
     try {
       const cartItemExists = cartItems.some((item) => item.name === good.name);
       if (cartItemExists) {
-        // Item is already in the cart, disable the button
         return;
       }
       const cartItem = {
@@ -36,9 +34,9 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
         price: good.price,
         shopId: good.shopId,
       };
-      // Send the cart data to the server
+
       await axios.post("http://localhost:3001/api/cartitems", cartItem);
-      // Update the cart state in the Redux store if needed
+
       setCartItems((prevCart) => [...prevCart, cartItem]);
     } catch (error) {
       console.error(`Post didnt work: ${error}`);

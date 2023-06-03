@@ -1,19 +1,15 @@
 import axios from "axios";
 
-// Fetch cart items from the server
 export const getCartItems = async () => {
   try {
     const response = await fetch("http://localhost:3001/api/cartitems");
-    console.log(response.status); // Log the response status
     const data = await response.json();
-    console.log(data); // Log the response data
     return data;
   } catch (error) {
     throw new Error("Failed to fetch cart items: " + error.message);
   }
 };
 
-// Remove a cart item from the server
 export const removeCartItem = async (itemId) => {
   try {
     const response = await fetch(
@@ -30,7 +26,6 @@ export const removeCartItem = async (itemId) => {
   }
 };
 
-// Update the quantity of a cart item on the server
 export const updateCartItem = async (itemId, quantity) => {
   try {
     const response = await fetch(
@@ -51,7 +46,16 @@ export const updateCartItem = async (itemId, quantity) => {
   }
 };
 
-// Submit the order to the server
+export const clearCartItems = async () => {
+  try {
+    const response = await axios.delete("http://localhost:3001/api/cartitems");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to clear cart items.");
+  }
+};
+
 export const submitOrder = async (orderData) => {
   try {
     const response = await fetch("/api/orders", {
@@ -66,15 +70,5 @@ export const submitOrder = async (orderData) => {
     }
   } catch (error) {
     throw new Error("Failed to submit order: " + error.message);
-  }
-};
-
-export const clearCartItems = async () => {
-  try {
-    const response = await axios.delete("http://localhost:3001/api/cartitems");
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to clear cart items.");
   }
 };

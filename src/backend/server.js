@@ -2,12 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const { Shop, Order, CartItem } = require("./db");
 
-// const { ObjectId } = require("mongodb");
-
-// Create Express app
 const app = express();
 app.use(cors());
-// Parse JSON requests
 app.use(express.json());
 
 // API routes
@@ -15,17 +11,6 @@ app.get("/api/shops", async (req, res) => {
   try {
     const shops = await Shop.find();
     res.json(shops);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-// API routes
-app.get("/api/cartitems", async (req, res) => {
-  try {
-    const cartItems = await CartItem.find();
-    res.json(cartItems);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
@@ -49,7 +34,26 @@ app.post("/api/orders", async (req, res) => {
   }
 });
 
-// Assuming you have the necessary dependencies and configurations set up
+app.get("/api/orders", async (req, res) => {
+  try {
+    const orders = await Order.find();
+
+    res.json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to retrieve orders." });
+  }
+});
+
+app.get("/api/cartitems", async (req, res) => {
+  try {
+    const cartItems = await CartItem.find();
+    res.json(cartItems);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.post("/api/cartitems", async (req, res) => {
   try {
@@ -76,7 +80,7 @@ app.delete("/api/cartitems/:itemId", async (req, res) => {
 
 app.delete("/api/cartitems", async (req, res) => {
   try {
-    await CartItem.deleteMany(); // Assuming CartItem is the Mongoose model for cart items
+    await CartItem.deleteMany();
     res.json({ message: "Cart items cleared" });
   } catch (error) {
     console.error(error);
