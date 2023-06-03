@@ -82,17 +82,23 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
 
   return (
     <>
-      <h1>Shopping Cart</h1>
+      <h1 className="main-title">Shopping Cart</h1>
       <ul>
         {cartItems.map((item) => (
-          <li key={item._id}>
-            <span>{item.name}</span>
-            <span>{item.price}</span>
-            <input
-              type="number"
-              value={item.quantity}
-              onChange={(e) => handleUpdateQuantity(item._id, e.target.value)}
-            />
+          <li className="shopping-cart-item" key={item._id}>
+            <span>Good name: {item.name}</span>
+            <span>Price: {item.price}$</span>
+            <div>
+              {" "}
+              <span>Type amount: </span>
+              <input
+                className="amount-input"
+                type="number"
+                value={item.quantity}
+                onChange={(e) => handleUpdateQuantity(item._id, e.target.value)}
+              />
+            </div>
+
             <button onClick={() => handleRemoveItem(item._id)}>Remove</button>
           </li>
         ))}

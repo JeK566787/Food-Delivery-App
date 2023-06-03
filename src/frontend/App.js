@@ -3,13 +3,15 @@ import { Routes, Route, Link } from "react-router-dom";
 import ShopsPage from "./ShopsPage";
 import ShoppingCartPage from "./ShoppingCartPage";
 
+import "./styles/App.css";
+
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
   return (
-    <>
+    <div className="container">
       <nav>
-        <ul>
+        <ul className="nav-bar">
           <li>
             <Link to="/">Shops</Link>
           </li>
@@ -37,7 +39,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 };
 

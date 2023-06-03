@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-import "./App.css";
+import YourCart from "./YourCart";
 
 const ShopsPage = ({ cartItems, setCartItems }) => {
   const [shops, setShops] = useState([]);
   const [selectedShop, setSelectedShop] = useState(null);
-
-  console.log(cartItems);
-
+  console.log(selectedShop);
   // Fetch the list of shops from the server
   useEffect(() => {
     fetchShops();
@@ -49,16 +46,18 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
   };
 
   return (
-    <div className="test">
-      <h1>Shops</h1>
+    <div>
+      {}
       {selectedShop ? (
         <div>
+          <h1 className="main-title">Choose Goods</h1>
           <h2>{selectedShop.name}</h2>
           <p>{selectedShop.description}</p>
           <ul>
             {selectedShop.goods.map((good, idx) => (
-              <li key={idx}>
-                {good.name} - ${good.price}
+              <li className="shopping-cart-item" key={idx}>
+                <span>Good name: {good.name}</span>
+                <span>Price: {good.price}$</span>
                 <button
                   disabled={cartItems.some((item) => item.name === good.name)} // Disable the button if the item is already in the cart
                   onClick={() => handleAddToCart(good)}
@@ -71,26 +70,20 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
           <button onClick={() => setSelectedShop(null)}>Back to Shops</button>
         </div>
       ) : (
-        shops.map((shop, idx) => (
-          <div key={idx}>
-            <h2>{shop.name}</h2>
-            <p>{shop.description}</p>
-            <button onClick={() => handleShopSelect(shop)}>Select Shop</button>
-          </div>
-        ))
-      )}
-      <h2>Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item, idx) => (
-            <li key={idx}>
-              {item.name} - ${item.price}
-            </li>
+        <div>
+          <h1 className="main-title">Choose Shop</h1>
+          {shops.map((shop, idx) => (
+            <div key={idx}>
+              <h2>{shop.name}</h2>
+              <p>{shop.description}</p>
+              <button onClick={() => handleShopSelect(shop)}>
+                Select Shop
+              </button>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
+      <YourCart cartItems={cartItems} />
     </div>
   );
 };
