@@ -15,17 +15,19 @@ This project is a food delivery app built using React.js. It allows users to bro
 
 1. Clone the repository:
 
-`git clone https://github.com/JeK566787/Food-Delivery-App`
+   `git clone https://github.com/JeK566787/Food-Delivery-App`
 
 2. Navigate to the project directory:
 
+   `cd Food-Delivery-App`
+
 3. Install the dependencies:
 
-`npm i`
+   `npm i`
 
 4. Start the development server:
 
-`npm run dev`
+   `npm run dev`
 
 5. Open the web application in your browser:
    `npm start`
