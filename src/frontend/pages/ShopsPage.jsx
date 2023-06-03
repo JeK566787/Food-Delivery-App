@@ -55,7 +55,7 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
             {selectedShop.goods.map((good, idx) => (
               <li className="shopping-cart-item" key={idx}>
                 <div>
-                  <span className="item-title">Good name: </span>
+                  <span className="item-title">Product Name: </span>
                   {good.name}
                 </div>
                 <div>
@@ -81,7 +81,7 @@ const ShopsPage = ({ cartItems, setCartItems }) => {
         <div>
           <h1 className="main-title ">Choose Shop</h1>
           {shops.map((shop, idx) => (
-            <div key={idx} className="shop-container test">
+            <div key={idx} className="shop-container ">
               <h2>{shop.name}</h2>
               <p>{shop.description}</p>
               <button

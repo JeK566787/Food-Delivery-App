@@ -12,6 +12,7 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -95,7 +96,7 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
         {cartItems.map((item, idx) => (
           <li className="shopping-cart-item" key={idx}>
             <div>
-              <span className="item-title">Good name: </span>
+              <span className="item-title">Product Name: </span>
               {item.name}
             </div>
             <div>
@@ -109,7 +110,7 @@ const ShoppingCartPage = ({ cartItems, setCartItems }) => {
               <input
                 className="amount-input"
                 type="number"
-                value={item.quantity}
+                // value={item.quantity}
                 onChange={(e) => handleUpdateQuantity(item._id, e.target.value)}
               />
             </div>

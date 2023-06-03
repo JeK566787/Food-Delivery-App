@@ -24,6 +24,7 @@ const OrdersPage = () => {
       <h1 className="main-title">Orders</h1>
       {orders.map((order) => (
         <div key={order._id}>
+          <h3 className="item-title">Order number: {order._id}</h3>
           <p className="item-title">Email: {order.email}</p>
           <p className="item-title">Phone Number: {order.phoneNumber}</p>
           <p className="item-title">Address: {order.address}</p>
@@ -31,7 +32,7 @@ const OrdersPage = () => {
             {order.items.map((item) => (
               <li className="shopping-cart-item" key={item._id}>
                 <div>
-                  <span className="item-title">Good name: </span>
+                  <span className="item-title">Product Name: </span>
                   {item.name}
                 </div>
                 <div>
@@ -51,7 +52,9 @@ const OrdersPage = () => {
           </ul>
         </div>
       ))}
-      <Link to="/">Back</Link>
+      <Link className="btn" to="/">
+        Back
+      </Link>
     </div>
   );
 };

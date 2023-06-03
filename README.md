@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Food Delivery App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a food delivery app built using React.js. It allows users to browse different shops, add items to their shopping cart, and submit orders.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Browse and select shops
+- View and add items to the shopping cart
+- Remove items from the shopping cart
+- Update the quantity of items in the shopping cart
+- Submit orders with contact information
+- View previous orders
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`git clone https://github.com/JeK566787/Food-Delivery-App`
 
-### `npm test`
+2. Navigate to the project directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Install the dependencies:
 
-### `npm run build`
+`npm i`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Start the development server:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm run dev`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Open the web application in your browser:
+   `npm start`
 
-### `npm run eject`
+## Dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The project relies on the following dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React: JavaScript library for building user interfaces
+- React Router DOM: Routing library for React applications
+- Axios: Promise-based HTTP client for making API requests
+- Other dependencies can be found in the `package.json` file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Frontend:
 
-## Learn More
+  - React.js: JavaScript library for building user interfaces.
+  - React Router: Routing library for handling navigation and URL routing in the app.
+  - Axios: JavaScript library for making HTTP requests to the backend API.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Backend:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - Node.js: JavaScript runtime for executing server-side code.
+  - Express.js: Web framework for building the RESTful API.
+  - MongoDB: NoSQL database for storing superhero data.
+  - Mongoose: MongoDB object modeling for Node.js.
 
-### Code Splitting
+- Data Base:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  - MongoDB Atlas: Fully-managed cloud database service provided by MongoDB.
 
-### Analyzing the Bundle Size
+## API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The project interacts with a RESTful API to fetch shop data, cart items, submit orders, and retrieve previous orders. The API endpoints used in the project are:
 
-### Making a Progressive Web App
+- `GET /api/shops` - Retrieve a list of available shops
+- `GET /api/cartitems` - Retrieve the current items in the shopping cart
+- `POST /api/cartitems` - Add an item to the shopping cart
+- `DELETE /api/cartitems/:itemId` - Remove an item from the shopping cart
+- `DELETE /api/cartitems` - Remove all items from the shopping cart
+- `PUT /api/cartitems/:itemId` - Update the quantity of an item in the shopping cart
+- `POST /api/orders` - Submit an order
+- `GET /api/orders` - Retrieve a list of previous orders
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Enjoy Food Delivery App

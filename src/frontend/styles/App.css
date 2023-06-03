@@ -43,10 +43,11 @@ ul {
 
 .shop-container {
   border: 1px solid blueviolet;
+  padding: 10px;
 }
 
-.test:nth-child(2),
-.test:nth-child(3) {
+.shop-container:nth-child(2),
+.shop-container:nth-child(3) {
   border-bottom: none;
 }
 /*-------- buttons ----------*/
@@ -78,6 +79,7 @@ ul {
   padding: 5px 10px;
   background-color: blueviolet;
   color: white;
+  text-decoration: none;
 }
 .btn-addCart:disabled {
   background-color: rgb(201, 171, 230);
